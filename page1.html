@@ -1,0 +1,85 @@
+<!--Jaylen Carrillo-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="header">INST377 - Lab 4</h1>
+
+        <!--Alert Me Section-->
+        <div class="sections">
+        <form name="userInfo" onsubmit="return AlertSection()">
+            <label for="name">Name: </label>
+            <input type="text" id="name" required>
+            <input type="submit" value="Alert Me!">
+        </form>
+        </div>
+
+        <script type="text/javascript">
+            function AlertSection() {
+                var nameValue = document.userInfo.name.value;
+                alert("Hi " + nameValue + "!"); 
+                return true;
+            }
+        </script>
+
+        <!--Change Color Section-->
+        <aside id="buttonSections">
+        <form name="changeBackground">
+            <input type="button" value="Change Color" id="color" onclick="ColorSection()">
+        </form>
+        </aside>
+
+        <script type="text/javascript">
+            function ColorSection() {
+                // if the background is pink, 
+                if (document.body.style.backgroundColor === "pink") {
+                    // change it to light blue
+                    document.body.style.backgroundColor = "lightblue";
+                } else {
+                    // if its not pink, make it pink
+                    document.body.style.backgroundColor = "pink";
+                }
+            }
+        </script>
+
+        <!--Text Tester Section-->
+        <div class="sections">
+        <form name="testText">
+            <label for="usrText">Text Tester: </label>
+            <input type="text" name="usrText" required>
+            <input type="button" value="Validate Text" onclick="TesterSection()">
+        </form>
+        </div>
+
+        <script type="text/javascript">
+            function TesterSection() {
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                var textInput = document.testText.usrText.value;
+                // checks if the input contains special characters
+                if (validation.test(textInput)) {
+                    alert("Invalid text found, please try again.");
+                } else {
+                    // clears the input field if the text is valid
+                    document.testText.usrText.value = "";
+                }
+            }
+        </script>
+        
+        <!--Add Text Section-->
+        <aside id="buttonSections">
+        <form>
+            <input type="button" value="Add Text" onclick="AddTextSection()">
+        </form>
+        </aside>
+        
+        <script type="text/javascript">
+            function AddTextSection() {
+                var originalHeader = document.getElementById("header");
+                originalHeader.innerHTML = "INST377 - Lab 4 - Add Text";
+            }
+        </script>
+</body>
+</html>
